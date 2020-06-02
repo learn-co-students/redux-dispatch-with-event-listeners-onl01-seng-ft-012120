@@ -4,6 +4,8 @@ function reducer(state = { count: 0 }, action) {
   switch (action.type) {
     case "INCREASE_COUNT":
       return { count: state.count + 1 };
+    case "DECREASE_COUNT":
+      return { count: state.count - 1 };
     default:
       return state;
   }
@@ -20,9 +22,14 @@ function render() {
 }
 
 let button = document.getElementById("button");
+let deleteButton = document.getElementById("delete-button");
 
 button.addEventListener("click", () => {
   dispatch({ type: "INCREASE_COUNT" });
+});
+
+deleteButton.addEventListener("click", () => {
+  dispatch({ type: "DECREASE_COUNT" });
 });
 
 dispatch({ type: "@@INIT" });
